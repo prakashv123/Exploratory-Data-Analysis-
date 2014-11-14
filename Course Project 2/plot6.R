@@ -20,7 +20,7 @@ colnames(CA.DF) <- c('year', 'Emissions')
 CA.DF$City <- paste(rep('CA', 4))
 
 DF <- as.data.frame(rbind(MD.DF, CA.DF))
-
+#png file
 png('plot6.png')
 ggplot(data = DF, aes(x = year, y = Emissions)) + geom_bar(aes(fill = year),stat = "identity") + guides(fill = F) + ggtitle('Total Emissions of Motor Vehicle Sources\nLos Angeles County, California vs. Baltimore City, Maryland') + ylab(expression('PM'[2.5])) + xlab('Year') + theme(legend.position = 'none') + facet_grid(. ~ City) + geom_text(aes(label = round(Emissions, 0), size = 1, hjust = 0.5, vjust = -1))
 dev.off()
